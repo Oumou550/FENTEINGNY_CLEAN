@@ -19,9 +19,6 @@ export default function Articles() {
 
   const {troc} = useSelector(state => state)
 
-  // const state
-
-  // const user = 
   return (
     <div>
       <div className='entete-article'>

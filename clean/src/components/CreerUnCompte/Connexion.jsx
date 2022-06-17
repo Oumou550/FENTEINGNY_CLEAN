@@ -22,8 +22,10 @@ export default function Connexion() {
   const submit = async (e) =>{
     e.preventDefault()
     try {   
+
+      console.log(data);
       setLoading(true)   
-     const res = await axios.post(`${process.env.REACT_APP_API_URL}user/login`,{...data})
+     const res = await axios.post(`/user/login`,{...data})
      setLoading(false)   
      console.log(res);
      localStorage.setItem('fristLogin', true)

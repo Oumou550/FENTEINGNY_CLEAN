@@ -13,8 +13,6 @@ export default function Payment({setTjour}) {
 
 var tmpdate = new Date(user?.updatedAt)
 
-
-
   return (
     <table className='table table-striped' >
       <thead>
@@ -26,7 +24,6 @@ var tmpdate = new Date(user?.updatedAt)
           <th>Date fin</th>
         </tr>
       </thead>
-   
 
     <tbody>
       {

@@ -98,7 +98,7 @@ export const getVentes = (token) =>{
 
 export const getTrocs =  (token) =>{
   return async (dispatch) => {
-   return await axios.get(`/user/infor`,{
+   return await axios.get(`${process.env.REACT_APP_API_URL}user/infor`,{
      headers: {Authorization: token}
    })
      .then(async(res) => {
