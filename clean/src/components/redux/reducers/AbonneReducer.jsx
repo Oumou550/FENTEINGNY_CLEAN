@@ -1,4 +1,4 @@
-import {ABONNE, GET_ABONNES,ADD_CART, GET_CART, RESET_CART, SAVE_CART, DESABONNE, DELETE_CART, GET_TROC, GET_VENTE, DELETE_VENTE, CREATE_PME, DELETE_PME, UPDATE_PME, GET_TROCS} from '../actions/AbonneAction'
+import {ABONNE, GET_ABONNES,ADD_CART, GET_CART, RESET_CART, SAVE_CART, DESABONNE, DELETE_CART, GET_TROC, GET_VENTE, DELETE_VENTE, CREATE_PME, DELETE_PME, UPDATE_PME, GET_TROCS, GET_OBJET_TROCS, DELETE_TROC, CREATE_TROC, UPDATE_TROC} from '../actions/AbonneAction'
 
 
 
@@ -6,7 +6,7 @@ import {ABONNE, GET_ABONNES,ADD_CART, GET_CART, RESET_CART, SAVE_CART, DESABONNE
 const initialState = {
     abonnes: [],
     cart: [],
-    troc: [],
+    trocsObject: [],
     ventes: [],
     trocs: []
 };
@@ -26,10 +26,21 @@ export default function AbonneReducer(state = initialState, action) {
                 action.payload
               ],
             }
+        case CREATE_TROC: return{
+              ...state,
+              trocsObject: [
+                ...state.trocsObject,
+                action.payload
+              ],
+            }
 
       case DELETE_PME: return{
               ...state,
               abonnes: state?.abonnes?.users?.filter(pro => pro._id !== action.payload)
+            }
+      case DELETE_TROC: return{
+              ...state,
+              trocsObject: state?.trocsObject?.filter(pro => pro._id !== action.payload)
             }
       
       case UPDATE_PME: return{
@@ -56,17 +67,32 @@ export default function AbonneReducer(state = initialState, action) {
           }
         })
       }
+
+      case UPDATE_TROC: return{
+        ...state,
+        trocsObject: state.trocsObject?.map(pro => {
+          if(pro._id !== action.payload.id){
+            return pro
+          }
+          return{
+            ...pro, 
+            desc: action?.payload?.troc?.desc,
+            weight: action?.payload?.troc?.weight,
+            images: action?.payload?.troc?.images,
+          }
+        })
+      }
       
-      case GET_TROC:
+      case GET_TROCS:
             return {
                 ...state,
                 trocs: action?.payload
             }   
     
-      case GET_TROCS:
+      case GET_OBJET_TROCS:
               return {
                   ...state,
-                  troc: action?.payload
+                  trocsObject: action?.payload
               }   
             
      case GET_VENTE:

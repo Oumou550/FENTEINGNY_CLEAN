@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { GlobalState } from '../global/GlobalState'
 
 export default function Payment({setTjour}) {
@@ -10,6 +10,13 @@ export default function Payment({setTjour}) {
     res.setDate(res.getDate() + days);
     return res;
 }
+
+useEffect(()=>{
+    setTjour(user?.payement?.filter(pay => {
+      return  pay?.service === "Mariage" || pay?.service === "Baptême" || pay?.service === "Concert" 
+    }))
+  
+  },[user])
 
 var tmpdate = new Date(user?.updatedAt)
 
@@ -29,7 +36,6 @@ var tmpdate = new Date(user?.updatedAt)
       {
         user?.payement?.map(pay => 
     pay?.service === "Mariage" || pay?.service === "Baptême" || pay?.service === "Concert" &&   <tr>
-                  {setTjour(pay)}
         <td>{pay.paymentID}</td>
         <td>{pay.paymentPseudo}</td>
         <td>{pay.montant}</td>

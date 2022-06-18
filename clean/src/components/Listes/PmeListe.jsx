@@ -22,19 +22,19 @@ export default function PmeListe() {
 <table class="table table-striped">
   <thead>
     <tr>
-      <th scope="col">Logo</th>
-      <th scope="col">Nom</th>
-      <th scope="col">Email</th>
-      <th scope="col">Quartier</th>
-
-      <th scope="col">Abonnement</th>
-      <th scope="col">Téléphone</th>
-      <th scope="col">Date debut abonnement</th>
-      <th scope="col">Date fin abonnement</th>
-      <th scope="col"> </th>
+      <th className='h6 text-center' style={{fontWeight: 'bold'}} scope="col">Logo</th>
+      <th className='h6 text-center' style={{fontWeight: 'bold'}} scope="col">Nom</th>
+      <th className='h6 text-center' style={{fontWeight: 'bold'}} scope="col">Email</th>
+      <th className='h6 text-center' style={{fontWeight: 'bold'}} scope="col">Quartier</th>
+      <th className='h6 text-center' style={{fontWeight: 'bold'}} scope="col">Service</th>
+      <th className='h6 text-center' style={{fontWeight: 'bold'}} scope="col">Téléphone</th>
+      <th className='h6 text-center' style={{fontWeight: 'bold'}} scope="col">Date debut abonnement</th>
+      <th className='h6 text-center' style={{fontWeight: 'bold'}} scope="col">Date fin abonnement</th>
+      <th className='h6 text-center' style={{fontWeight: 'bold'}} scope="col"> </th>
     </tr>
   </thead>
   <tbody>
+
     
     {
         cart?.map(c => <PmeRowListe c={c}/>)
@@ -43,6 +43,9 @@ export default function PmeListe() {
   </tbody>
 </table>
     </div>
+    {/* {
+      cart?.length === 0 && <h1 style={{textAlign: 'center'}}>vous n'êtes abonné à aucune PME</h1>
+    } */}
    </div>
   )
 }

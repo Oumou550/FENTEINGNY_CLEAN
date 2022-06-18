@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import { GlobalState } from '../global/GlobalState'
 import Payment from './Payment'
 
-export default function ModalHistoryMensuel({setTmois}) {
+export default function ModalHistoryMensuel({setTmois, tmois}) {
 
   return (
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -15,7 +15,7 @@ export default function ModalHistoryMensuel({setTmois}) {
             </button>
           </div>
           <div class="modal-body">
-         <Payment setTmois={setTmois}/> 
+         <Payment setTmois={setTmois} tmois={tmois}/> 
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

@@ -3,12 +3,12 @@ const trocCtrl = require('../controllers/trocCtrl')
 const router = require('express').Router()
 
 router.route('/trocs')
-  .get(trocCtrl.getTroc)
-  .post(trocCtrl.createTroc)
+  .get(trocCtrl.getTrocs)
+  .post(trocCtrl.createTrocs)
 
-// router.route('/category/:id')
-//   .put(categoryCtrl.updateCategory)
-//   .delete(categoryCtrl.deleteCategory)
+router.route('/trocs/:id')
+  .put(trocCtrl.updateTrocs)
+  .delete(trocCtrl.deleteTrocs)
 
 
 

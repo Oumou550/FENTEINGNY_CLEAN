@@ -6,7 +6,7 @@ export default function HistoryTroc() {
   const state = useContext(GlobalState)
 
   const user = state.userApi.user
-  console.log(user?.historyVente);
+  console.log(user?.historyTroc);
 
 return (
 <>

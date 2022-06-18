@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { getAbonnes, getUsersRequest } from '../redux/actions/AbonneAction'
+import ReactLoading from 'react-loading';
 
 
 
@@ -15,6 +16,8 @@ export default function Pme({filtering, filter, research, search, setChange}) {
 
   const {abonnes} = useSelector(state => state)
 
+  console.log(abonnes?.users?.length);
+
   return (
     <div className="conteneur">
 
@@ -26,6 +29,13 @@ export default function Pme({filtering, filter, research, search, setChange}) {
       </div>
    </>
  }
+
+{
+  abonnes?.users?.length === 0 && <div style={{marginLeft: '840px'}}>
+  <ReactLoading type='spin'  color='black' height={130} width={130} />
+</div>
+}
+
       {/* <div className='barre'>
       <form className="formulaire-search  d-inline-flex ">
         <select value={search} onChange={(e)=> setSearch(e.target.value)} className='combo-select' name="" id="">

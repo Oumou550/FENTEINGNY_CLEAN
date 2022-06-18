@@ -18,7 +18,7 @@ export default function TabTroc({user}) {
                                         <th scope='col'>Quartier</th>
                                         <th scope='col'>Commune</th>
                                         <th style={{width: '100px'}} scope='col'>Téléphone</th>
-                                        <th scope='col'>Décharge</th>
+                                        {/* <th scope='col'>Décharge</th> */}
                                         {/* <th scope='col'>Abonnés</th> */}
                                      </tr>
                                  </thead>

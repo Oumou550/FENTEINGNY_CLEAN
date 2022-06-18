@@ -22,9 +22,9 @@ export default function ItemsRecyclage({recyclage, toggle, research, setChange})
   }
   return (
 <>
-<div  class={`produ col-sm col-md col-lg ${research ? '' :  !toggle && `col-md-3 col-lg-3`}} mb-5`}>
+<div  class={`produ col-sm ${research ? '' :  !toggle && `col-md-3 col-lg-3`}} mb-5`}>
 <div class="card">
-  <img class="card-img-top rounded w-100" height="200px"  src={recyclage?.images?.url} alt="Card image cap"/>
+  <img class="card-img-top rounded w-100"  height="200px"  src={recyclage?.images?.url} alt="Card image cap"/>
   <div class="card-body">
   <aside>
         <div className='d-flex justify-content-space-between'>
@@ -43,8 +43,8 @@ Plus de details
  {
   isAdmin === 1 && <div className='justify-space-between mt-5'>
     <p onClick={()=> onDelete()} className='btn btn-primary'>delete</p>
-  <Link to={`/createPME/${recyclage._id}`} onClick={()=> setChange(true)}> 
-   <p  style={{position: 'absolute', left: '100px'}} className='btn btn-info mr-5'>update</p></Link>
+  {/* <Link to={`/createPME/${recyclage._id}`} onClick={()=> setChange(true)}> 
+   <p  style={{position: 'absolute', left: '100px'}} className='btn btn-info mr-5'>update</p></Link> */}
   </div>
 }
   </div>

@@ -1,9 +1,9 @@
 import React from 'react'
 
-export default function Titre() {
+export default function Titre({user}) {
   return (
       <div>
-    <h1 className="mt-4">Sonfonia Centre</h1>         
+    <h1 className="mt-4">{user?.pseudo}</h1>         
     </div>
   )
 }

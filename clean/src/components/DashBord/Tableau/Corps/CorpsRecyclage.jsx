@@ -29,9 +29,9 @@ export default function CorpsRecyclage({vente}) {
       <td>{vente?.quartier}</td>
       <td>{vente?.commune}</td>
       <td>{vente?.tel}</td>
-      <td> 
+      {/* <td> 
         <button onClick={()=> decharge()}  className='btn btn-success'>en attente</button >
-      </td>
+      </td> */}
      
     </tr>
     

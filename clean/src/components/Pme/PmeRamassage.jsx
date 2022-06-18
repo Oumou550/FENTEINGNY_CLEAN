@@ -9,8 +9,16 @@ export default function PmeRamassage({data, toggle, commune, research, setChange
   const [taille, setTaille] = useState()
 
   const {abonnes} = useSelector(state => state)
+  const [loading, setLoading] = useState(false)
 
   console.log(abonnes?.users?.length);
+
+  if(loading) return <div>
+  <div style={{marginLeft: '770px', marginTop: '350px'}}>
+       <ReactLoading type='spin'  color='black' height={130} width={130} />
+   </div>
+ </div>
+
 
   return (
     <div style={{width: '100%', backgroundColor: '#f6f6f6'}}>

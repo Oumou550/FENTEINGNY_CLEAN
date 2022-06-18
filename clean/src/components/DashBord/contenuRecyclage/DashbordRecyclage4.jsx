@@ -18,10 +18,10 @@ export default function DashbordRecyclage4({user}) {
              <span
                     className="text-nowrap text-xs text-muted">Listes des trocs</span> </div>
         </div>
-        <div className="card-footer d-flex align-items-center justify-content-between text-dark">
+        {/* <div className="card-footer d-flex align-items-center justify-content-between text-dark">
             <a className="small text-dark stretched-link" href="#">Voir les détails</a>
             <div className="small text-dark"><i className="fas fa-angle-right"></i></div>
-        </div>
+        </div> */}
     </div>
 </div>
   )

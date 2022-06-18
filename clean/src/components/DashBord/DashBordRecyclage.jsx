@@ -7,6 +7,7 @@ import DashbordRecyclage4 from './contenuRecyclage/DashbordRecyclage4'
 import FooterDash from './FooterDash/FooterDash'
 import Nav1 from './Nav/Nav1'
 import Nav2 from './Nav/Nav2'
+import NavRecy from './Nav/NavRecy'
 import Tableau from './Tableau/Tableau'
 import TabTroc from './Tableau/TabTroc'
 import TbRecyclage from './Tableau/TbRecyclage'
@@ -19,7 +20,7 @@ export default function DashBordRecyclage() {
   const user = state.userApi.user
   return (
     <body class="sb-nav-fixed ">
-       <Nav1/>
+       <NavRecy/>
         <div id="layoutSidenav">
    
             <div id="layoutSidenav_content">
@@ -27,8 +28,8 @@ export default function DashBordRecyclage() {
             <div className="container-fluid px-4">
            
                     <div className="row g-6 mb-6">
-                        <Titre/>
-                        <DashbordRecyclage1 user={user}/>
+                        <Titre user={user}/>
+                        {/* <DashbordRecyclage1 user={user}/> */}
                         <DashbordRecyclage2 user={user}/>
                         <DashbordRecyclage3 user={user}/>
                         <DashbordRecyclage4 user={user}/>

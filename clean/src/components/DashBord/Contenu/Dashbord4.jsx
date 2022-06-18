@@ -15,7 +15,7 @@ export default function Dashbord4() {
         <div className="card-body">
             <div className="row">
                 <div className="col"> <span
-                        className="h6 font-semibold text-muted text-sm d-block mb-2">Historiques</span> <span className="h3 font-bold mb-0">{[tjour].length}</span> </div>
+                        className="h6 font-semibold text-muted text-sm d-block mb-2">Historiques</span> <span className="h3 font-bold mb-0">{tjour?.length === 0 ? "vide" : tjour?.length}</span> </div>
                 <div className="col-auto">
                     <div className="icon icon-shape bg-warning text-white text-lg rounded-circle">
                         <i className="bi bi-minecart-loaded"></i>

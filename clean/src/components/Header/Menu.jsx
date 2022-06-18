@@ -127,6 +127,22 @@ export default function Menu({filter,setFiltering, setResearch, search, setSearc
              </li>
 
     }
+
+
+{
+        isAdmin === 3  &&  <li>
+                 <Link to="/createPME"></Link>
+             </li>
+
+    }
+
+{
+        isAdmin === 2  &&  <li>
+                 <Link to="/createPME"></Link>
+             </li>
+
+    }
+         
                 {/* <li>
                     <Link to="/abonnement">Abonnement</Link>
                 </li> */}
@@ -156,7 +172,8 @@ export default function Menu({filter,setFiltering, setResearch, search, setSearc
 
 {
         isAdmin === 1 && <li>
-                    <Link to="/artiles">articles</Link>
+                    <Link  to="/articles">articles</Link>
+                    <Link onClick={()=> setChange(false)} to="/createArticle">crée un article</Link>
         </li>
     }
 

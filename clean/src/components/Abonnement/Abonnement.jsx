@@ -106,7 +106,7 @@ export default function Abonnement() {
         // dispatch(addCart(ramassage, service, token))
         dispatch(addPayement(ramassage._id, paymentID, user.pseudo, total, service, user?._id))
     
-        alert("felicitation vous ete desormais abonne a cette PME")
+        alert("felicitation vous êtes désormais abonne a cette PME")
 
         window.location = '/pmeliste'
     }

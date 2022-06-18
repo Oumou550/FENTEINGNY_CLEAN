@@ -1,15 +1,25 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { GlobalState } from '../global/GlobalState'
 
-export default function Payment({setTmois}) {
+export default function Payment({setTmois, tmois}) {
   const state = useContext(GlobalState)
   const user = state.userApi.user
 
+  let data = []
   function addDaysToDate(date, days){
     var res = new Date(date);
     res.setDate(res.getDate() + days);
     return res;
 }
+
+useEffect(()=>{
+  setTmois(user?.payement?.filter(pay => {
+    return pay?.service === "Entreprises" || pay?.service === "Restaurants" || pay?.service === "Maisons" 
+  }))
+
+},[user])
+
+console.log(tmois);
 
 var tmpdate = new Date(user?.updatedAt)
 
@@ -28,9 +38,9 @@ var tmpdate = new Date(user?.updatedAt)
    
 
 {
-        user?.payement?.map(pay => 
+    user?.payement?.map(pay => 
         pay?.service === "Entreprises" || pay?.service === "Restaurants" || pay?.service === "Maisons"  ?  <tr>
-          {setTmois(pay)}
+      
         <td>{pay.paymentID}</td>
         <td>{pay.paymentPseudo}</td>
         <td>{pay.montant}</td>

@@ -15,6 +15,7 @@ export default function Modale({ramassage}) {
   const uid = state.userApi.uid
   const user = state.userApi.user
   const isLogged = state.userApi.isLogged
+  const isAdmin = state.userApi.isAdmin
 
   const redirect = () =>{
     if(!isLogged){
@@ -49,8 +50,8 @@ export default function Modale({ramassage}) {
             <div className="modale-texte">
                 <h1>{ramassage?.pseudo}</h1>
                 <h2 style={{width: '135px'}}>Ramassage</h2>
-                <p><span>Ouvrable 7jours /7</span></p>
-                <p><span>Horaire de travail:   </span>08h à 17h30</p>
+                <p><span>Ouvrable {ramassage?.open}jours /7</span></p>
+                <p><span>Horaire de travail:   </span>{ramassage?.heur_debut_h}h à {ramassage?.heur_fin_h}h</p>
                 <p><span>Quartier:   </span>{ramassage?.quartier}</p>
                 <p><span>Commune:   </span>{ramassage?.commune}</p>
                 <p><span>Email:   </span>{ramassage?.email}</p>
@@ -62,7 +63,9 @@ export default function Modale({ramassage}) {
       <div class="modal-footer">
         <p type="button"  class="btn btn-secondary" data-dismiss="modal">Close</p>
       
-          <Link to={!isLogged ? '/connexion' : `/abonnement/${ramassage._id}`} type="button" onClick={()=> redirect()} class={ 'btn btn-success around'}> { "S'abonner"}</Link> :
+{
+  isAdmin === 0 && <Link to={!isLogged ? '/connexion' : `/abonnement/${ramassage._id}`} type="button" onClick={()=> redirect()} class={ 'btn btn-success around'}> { "S'abonner"}</Link> 
+}
           {/* <p type="button" onClick={()=> desabonneToi()} class={'btn btn-danger around'}> {'Se desabonne'}</p> */}
         
 

@@ -3,10 +3,10 @@ import Articles from './Articles'
 import ModaleRecy from './ModaleRecy'
 import ModalVente from './ModalVente'
 
-export default function Produits() {
+export default function Produits({setChange}) {
   return (
     <div className='conteneur'>
-        <Articles/>
+        <Articles setChange={setChange}/>
         {/* <ModaleRecy/>
         <ModalVente/> */}
     </div>

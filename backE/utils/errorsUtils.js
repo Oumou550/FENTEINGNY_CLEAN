@@ -1,5 +1,6 @@
 module.exports.signUpErrors = (err) =>{
-  let errors = {pseudo:'', email:'', password:''}
+  let errors = {pseudo:'', email:'', password:'', ref: ''}
+
 
   if(err.message.includes('pseudo'))
     errors.pseudo = "Pseudo incorrect"
@@ -8,13 +9,16 @@ module.exports.signUpErrors = (err) =>{
     errors.email = `Email incorrect`;
 
   if(err.message.includes('password'))
-    errors.password = `Le mot de passe doit faires 6 caractere au minimun`  
+    errors.password = `Le mot de passe doit faires 6 caractère au minimun`  
 
   if(err.code === 11000)  
-    errors.pseudo = `ce pseudo est deja pris`
+    errors.pseudo = `ce pseudo est déjà pris`
 
   if(err.code === 11000)  
-    errors.email = `ce email est deja enregistrer`
+    errors.ref = `cette réference est déjà prise`
+
+  if(err.code === 11000)  
+    errors.email = `cet email est déjà enregistrer`
 
   return errors
 }

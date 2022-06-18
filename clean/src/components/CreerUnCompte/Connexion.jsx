@@ -12,6 +12,7 @@ export default function Connexion() {
   const state = useContext(GlobalState)
   const isAdmin = state.userApi.isAdmin
   const [loading, setLoading] = useState(false)
+  const [toggle, setToggle] = useState(false)
 
   const [data, setData] = useState({
     email: '',
@@ -42,10 +43,10 @@ export default function Connexion() {
 
 
     } catch (err) {
-      if(err.response.data.msg.email){
-        alert(err.response.data.msg.email)
+      if(err.response.data.msg?.email){
+        alert(err.response.data.msg?.email)
       }else{
-        alert(err.response.data.msg.password)
+        alert(err.response.data.msg?.password)
       }
     }
 }
@@ -72,7 +73,14 @@ export default function Connexion() {
      </div>
      <div class="form-group mb-3">
             <label for="exampleInputPassword1">Mot de passe </label>
-            <input required value={data.password} onChange={(e)=> {setData({...data, password: e.target.value})}} type="password" className="form-control" id="exampleInputPassword1" />
+            <input required value={data.password} onChange={(e)=> {setData({...data, password: e.target.value})}} type={toggle ? "text" : "password"}  className="form-control" id="exampleInputPassword1" />
+            {
+  !toggle ?     
+  <i onClick={()=> setToggle(!toggle)} style={{position: 'absolute', left: '1075px', top: '615px'}} class="las h2 la-eye"></i>
+  : 
+  <i onClick={()=> setToggle(!toggle)} style={{position: 'absolute', left: '1075px', top: '615px'}} class="lar h2 la-eye-slash"></i>
+
+}
      </div>
       <button type="submit" className="button-inscription btn btn-dark mb-4">
 

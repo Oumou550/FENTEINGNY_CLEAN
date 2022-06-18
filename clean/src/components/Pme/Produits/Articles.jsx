@@ -15,9 +15,9 @@ import ItemsArticles from './ItemsArticles'
 import { useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
 
-export default function Articles() {
+export default function Articles({setChange}) {
 
-  const {troc} = useSelector(state => state)
+  const {trocsObject} = useSelector(state => state)
 
   return (
     <div>
@@ -31,7 +31,7 @@ export default function Articles() {
    <div className="row contenu-1 d-inline-flex align-items-center">
 
     {
-      troc?.map(t => <ItemsArticles t={t}/>)
+      trocsObject?.map(t => <ItemsArticles t={t} setChange={setChange}/>)
     }  
   </div>
    </div>

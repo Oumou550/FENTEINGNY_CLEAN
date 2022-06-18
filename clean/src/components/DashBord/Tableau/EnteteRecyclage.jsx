@@ -8,7 +8,7 @@ export default function EnteteRecyclage({user}) {
    const {ventes} = useSelector(state => state)
 
   return (
-       <table style={{width: "500px", fontSize: '20px'}}  className='table table-striped'>
+       <table style={{width: "900px", fontSize: '18px'}}  className='table table-striped'>
                              <thead className='thead-dark'>
                                      <tr>
                                         <th scope='col'>Pseudo </th>
@@ -16,7 +16,7 @@ export default function EnteteRecyclage({user}) {
                                         <th scope='col'>Quartier</th>
                                         <th scope='col'>Commune</th>
                                         <th style={{width: '100px'}} scope='col'>Téléphone</th>
-                                        <th scope='col'>Décharge</th>
+                                        {/* <th scope='col'>Décharge</th> */}
                                         {/* <th scope='col'>Abonnés</th> */}
                                      </tr>
                                  </thead>

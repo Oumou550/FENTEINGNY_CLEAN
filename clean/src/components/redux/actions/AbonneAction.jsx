@@ -8,14 +8,18 @@ export const DELETE_CART = "DELETE_CART"
 export const SAVE_CART = "SAVE_CART";
 export const RESET_CART = "RESET_CART";
 export const GET_ABONNES = "GET_ABONNES";
-export const GET_TROC = "GET_TROC"
 export const GET_TROCS = "GET_TROCS"
+export const GET_OBJET_TROCS = "GET_OBJET_TROCS"
 export const GET_VENTE = "GET_VENTE"
 export const DELETE_VENTE = "DELETE_VENTE"
 export const GET_VALIDE_VENTE = "GET_VALIDE_VENTE"
 export const CREATE_PME = "CREATE_PME"
 export const UPDATE_PME = "UPDATE_PME"
 export const DELETE_PME = "DELETE_PME"
+
+export const CREATE_TROC = "CREATE_TROC"
+export const UPDATE_TROC = "UPDATE_TROC"
+export const DELETE_TROC = "DELETE_TROC"
 
 export const getAbonnes = () => {
   return (dispatch) => {
@@ -46,7 +50,20 @@ export const createPme = (newPme) =>{
         dispatch({type: CREATE_PME, payload: {...newPme}})
       }
     }) 
-    .catch(err => console.log(err))
+    .catch(err => {
+      if(err?.response?.data?.msg?.ref){
+        alert(err?.response?.data?.msg?.ref)
+      }
+      if(err?.response?.data?.msg?.pseudo){
+        alert(err?.response?.data?.msg?.pseudo)
+      }
+       if(err?.response?.data?.msg?.email){
+        alert(err?.response?.data?.msg?.email)
+      }
+      if(err?.response?.data?.msg?.password){
+        alert(err?.response?.data?.msg?.password)
+      }
+    })
   }
 }
 
@@ -67,6 +84,43 @@ export const deletePme = (id) =>{
 }
 
 
+export const createTroc = (newTroc) =>{
+
+  return (dispatch)=>{
+    console.log(newTroc);
+  
+    return axios({
+      method: "post",
+      url: `${process.env.REACT_APP_API_URL}api/trocs`,
+      data: {...newTroc}
+    })
+    .then(res =>{
+      if(res.data.msg){
+        alert(res.data.msg)
+      }else{
+        dispatch({type: CREATE_PME, payload: {...newTroc}})
+      }
+    }) 
+    .catch(err => console.log(err))
+  }
+}
+
+export const updateTroc = (troc, id) =>{
+  return (dispatch) => axios
+    .put(`/api/trocs/${id}`, troc)
+    .then(res =>{
+      console.log(res.data, id);
+      dispatch({type: UPDATE_TROC, payload: {troc: res.data.troc, id}})
+    })
+    .catch(err => console.log(err))
+}
+
+export const deleteTroc = (id) =>{
+  return (dispatch) => axios  
+    .delete(`/api/trocs/${id}`)
+    .then(res => dispatch({type: DELETE_TROC, payload: id}))
+}
+
 
 
 export const getCart =  (token) =>{
@@ -84,7 +138,7 @@ export const getCart =  (token) =>{
 
 export const getVentes = (token) =>{
  return async (dispatch) => {
-  return await axios.get(`/user/infor`,{
+  return await axios.get(`${process.env.REACT_APP_API_URL}user/infor`,{
     headers: {Authorization: token}
   })
     .then(async(res) => {
@@ -103,18 +157,18 @@ export const getTrocs =  (token) =>{
    })
      .then(async(res) => {
       //  console.log("gggggg", res?.data?.trocs);
-   await  dispatch({type: GET_TROC, payload: res?.data?.trocs})
+   await  dispatch({type: GET_TROCS, payload: res?.data?.trocs})
      })
      .catch((err) => console.log(err));
  };
  } 
 
- export const getTroc =  () =>{
+ export const get_Object_Troc =  () =>{
   return async (dispatch) => {
    return await axios.get(`/api/trocs`)
      .then(async(res) => {
        console.log("gggggg", res?.data);
-   await  dispatch({type: GET_TROCS, payload: res?.data})
+   await  dispatch({type: GET_OBJET_TROCS, payload: res?.data})
      })
      .catch((err) => console.log(err));
  };

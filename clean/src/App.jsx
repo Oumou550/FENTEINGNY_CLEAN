@@ -21,9 +21,10 @@ import Menu from './components/Header/Menu';
 import Produits from './components/Pme/Produits/Produits';
 import Footer from './components/Footer/Footer';
 import CreatePME from './components/CreatePME/CreatePME';
+import CreateArticle from './components/CreateArticle/CreateArticle';
 import { useEffect, useContext, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getAbonnes, getCart, getTrocs, getVentes,getUsersRequest, getTroc } from './components/redux/actions/AbonneAction';
+import { getAbonnes, getCart, getTrocs, getVentes,getUsersRequest, get_Object_Troc } from './components/redux/actions/AbonneAction';
 import PmeListe from './components/Listes/PmeListe';
 import { GlobalState } from './components/global/GlobalState';
 import axios from 'axios';
@@ -49,7 +50,7 @@ function App() {
     dispatch(getTrocs(token))
     dispatch(getVentes(token))
     dispatch(getCart(token))
-    dispatch(getTroc())
+    dispatch(get_Object_Troc())
   },[dispatch,token])
     
   const state = useContext(GlobalState)
@@ -94,21 +95,39 @@ const ResultFilter = (input) => {
     <Menu filter={ResultFilter} setFiltering={setFiltering} setResearch={setResearch} search={search} setSearch={setSearch} setChange={setChange}/>
         <Switch>
        {
-         isAdmin === 3 &&  <Route path="/" component={DashBord}/>
+         isAdmin === 3 && <>
+          <Route exact path="/" component={DashBord}/>
+         <Route exact path="/createPME/:id" component={CreatePME}/> 
+         </>
        }
         {
-          isAdmin === 2 &&   <Route path="/" component={DashBordRecyclage}/>
+          isAdmin === 2 &&  <>
+           <Route exact path="/" component={DashBordRecyclage}/>
+         <Route exact path="/createPME/:id" component={CreatePME}/> 
+
+          </>
         }
+
 
         {
           isAdmin === 1 && <>
            {
-             change ?  <Route exact path="/createPME/:id" component={CreatePME}/> :
+            //  change ?  <Route exact path="/createPME/:id" component={CreatePME}/> :
             <>
-             <Route exact  path="/createPME" component={CreatePME}/> 
+            
+           {
+             change ?   <Route exact path="/createArticle/:id" component={()=> <CreateArticle/>}/>
+             :
+            <>
+             <Route exact path="/createArticle" component={()=> <CreateArticle/>}/>
             </>
            }
-           <Route exact  path="/" component={()=> <Pme search={search} filtering={filtering} filter={filter} research={research} setChange={setChange}/>}/>
+        <Route exact  path="/" component={()=> <Pme search={search} filtering={filtering} filter={filter} research={research} setChange={setChange}/>}/>
+        <Route exact path="/articles" component={()=> <Produits setChange={setChange}/>}/>
+        <Route exact  path="/createPME" component={CreatePME}/> 
+
+            </>
+           }
           
           </>
         }

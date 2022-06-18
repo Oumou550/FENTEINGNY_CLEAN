@@ -29,8 +29,8 @@ export default function ModaleReyclage({recyclage}) {
             <div className="modale-texte">
                 <h1>{recyclage?.pseudo}</h1>
                 <h2>Recyclage</h2>
-                <p><span>Ouvrable 7jours /7</span></p>
-                <p><span>Horaire de travail:   </span>08h à 17h30</p>
+                <p><span>Ouvrable {recyclage?.open}jours /7</span></p>
+            <p><span>Horaire de travail:   </span>{recyclage?.heur_debut_h}h à {recyclage?.heur_fin_h}</p>
                 <p><span>Quartier:   </span>{recyclage?.quartier}</p>
                 <p><span>Commune:   </span>{recyclage?.commune}</p>
                 <p><span>Email:   </span>{recyclage?.email}</p>
@@ -54,7 +54,7 @@ export default function ModaleReyclage({recyclage}) {
 
         <p onClick={()=> check.trocs === '' && check.ventes === '' ? nothing() : check.trocs === "trocs" ? redirect() : ''} type="button"  
         class={`${check.ventes === "ventes" ? 'btn btn-success rounded modale' : 'btn btn-success around'} `}
-      data-target={`${check.ventes === 'ventes' ? `#${recyclage?.commune}` : ''}`}  data-toggle={`${check.ventes === 'ventes' ? 'modal' : ''}`}>Suivant</p>
+      data-target={`${check.ventes === 'ventes' ? `#${recyclage?.ref}` : ''}`}  data-toggle={`${check.ventes === 'ventes' ? 'modal' : ''}`}>Suivant</p>
 
       </div>
   <ModalVentes recyclage={recyclage}/>

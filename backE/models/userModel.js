@@ -12,8 +12,6 @@ const SchemaUser = new mongoose.Schema(
     pseudo: {
       type: String,
       required: true,
-      minlength: 3,
-      maxlength: 55,
       unique: true,
       trim: true
     },

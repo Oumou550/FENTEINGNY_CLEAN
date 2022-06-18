@@ -22,10 +22,8 @@ export default function DashBord() {
   const [filter, setFilter] = useState(false)
 
   const ResultFilter = (input) => {
-    console.log(input);
-    let fullList =  abonnes
-    console.log("full: ", fullList);
-    const result =  fullList?.users?.filter(item =>{
+
+    const result =  user?.abonnes?.filter(item =>{
       console.log("items:",item?.pseudo);
       const name = item?.pseudo.toLowerCase()
       const term = input?.toLowerCase()

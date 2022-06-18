@@ -1,10 +1,11 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import { GlobalState } from '../../global/GlobalState'
 import ModalHistoryMensuel from '../ModalHistoryMensuel'
 
-export default function Dashbord3({setTmois, tmois}) {
+export default function Dashbord3() {
 
     const state = useContext(GlobalState)
+    const [tmois, setTmois] = useState([])
     const user = state.userApi.user
   return (
    <>
@@ -13,7 +14,7 @@ export default function Dashbord3({setTmois, tmois}) {
         <div className="card-body">
             <div className="row">
                 <div className="col"> <span
-                        className="h6 font-semibold text-muted text-sm d-block mb-2">Historiques</span> <span className="h3 font-bold mb-0">{[tmois].length}</span> </div>
+                        className="h6 font-semibold text-muted text-sm d-block mb-2">Historiques</span> <span className="h3 font-bold mb-0">{tmois?.length === 0 ? "vide" : tmois?.length}</span> </div>
                 <div className="col-auto">
                     <div className="icon icon-shape bg-info text-white text-lg rounded-circle"> <i
                             className="bi bi-clock-history"></i> </div>
@@ -35,7 +36,7 @@ export default function Dashbord3({setTmois, tmois}) {
         </div>
     </div>
 </div>
-    <ModalHistoryMensuel setTmois={setTmois}/>
+    <ModalHistoryMensuel setTmois={setTmois} tmois={tmois}/>
    </>
   )
 }

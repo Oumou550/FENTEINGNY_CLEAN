@@ -16,8 +16,8 @@ export default function CorpsTroc({troc}) {
         <td>{troc?.quartier}</td>
         <td>{troc?.commune}</td>
         <td>{troc?.tel}</td>
-        <td>  
-            <button onClick={()=> decharge()} className='btn btn-success'>en attente</button ></td>
+        {/* <td>  
+            <button onClick={()=> decharge()} className='btn btn-success'>en attente</button ></td> */}
     </tr>
   
     
